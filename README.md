@@ -54,14 +54,15 @@ ProcrastinationBuster offers a diverse array of features tailored to meet the di
 - **Team Collaboration (Optional)**: Collaborate with colleagues on shared tasks and projects to enhance teamwork and efficiency.
 - **Performance Analysis (Optional)**: Gain valuable insights into your productivity trends and performance metrics to optimize your workflow.
   For a visual representation of the usecases , please refer to the attached use-case diagram.
-  usecase.png
+  ![Use-Case Diagram](usecase.png)
 
 ---
 
 ## Database Schema Diagram
 
 For a visual representation of the database structure, please refer to the attached schema diagram.
-schema.png
+ ![Database Schema Diagram](schema.png)
+
 
 ---
 
