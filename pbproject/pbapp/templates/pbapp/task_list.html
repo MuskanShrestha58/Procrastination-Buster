@@ -1,0 +1,133 @@
+<!-- pbapp/task_list.html -->
+
+{% extends 'base.html' %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+        margin: 0;
+        padding: 0;
+        display: flex;
+    }
+
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .task-list-container {
+        flex: 1;
+        margin-right: 20px;
+    }
+
+    .completed-container {
+        flex: 1;
+        background-color: #ffffff;
+        border-radius: 5px;
+        padding: 15px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .task-list,
+    .completed-list {
+        list-style: none;
+        padding: 0;
+    }
+
+    .task-item {
+        background-color: #fff;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        padding: 15px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .task-item h3 {
+        margin-top: 0;
+        color: #333;
+    }
+
+    .task-item p {
+        margin-bottom: 5px;
+        color: #666;
+    }
+
+    /* Add hover effect */
+    .task-item:hover {
+        background-color: #f0f0f0;
+        transition: background-color 0.3s ease;
+    }
+
+    .accent {
+        color: #A36D68; /* Accent color for headings and titles */
+    }
+
+    /* Button styling */
+    .button {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #A36D68;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+
+    .button:hover {
+        background-color: #F3D6D3;
+    }
+
+    /* Style checkboxes */
+    .checkbox {
+        margin-right: 10px;
+    }
+</style>
+
+{% block content %}
+<div class="container">
+    <div class="task-list-container">
+        <a href="{% url 'pbapp:pbapp-taskcreate' %}" class="cta-button">
+            <i class="fas fa-plus"></i> Add tasks
+        </a>>
+        <h1>Your Tasks</h1>
+        <ul class="task-list">
+            {% for task in task_list %}
+            <div class="checkbox"><input type="checkbox" name="task" id="task{{ forloop.counter }}"></div>
+            <li class="task-item">
+                <h3>{{ task.title }}</h3>
+                <p>{{ task.description }}</p>
+                <p>Due: {{ task.due_date }}</p>
+            </li>
+            {% empty %}
+            <p>No tasks found.</p>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="completed-container">
+        <h2>Completed Tasks</h2>
+        <ul class="completed-list">
+            <!-- Completed tasks will appear here -->
+        </ul>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const taskList = document.querySelector(".task-list");
+        const completedList = document.querySelector(".completed-list");
+
+        taskList.addEventListener("change", function (event) {
+            if (event.target.type === "checkbox") {
+                const listItem = event.target.closest(".task-item");
+                listItem.style.display = "none";
+                completedList.appendChild(listItem);
+            }
+        });
+    });
+</script>
+
+{% endblock %} 

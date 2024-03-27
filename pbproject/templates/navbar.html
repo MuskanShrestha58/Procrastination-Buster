@@ -1,0 +1,138 @@
+{% load static %}
+<style>
+  /* Style the navigation bar */
+  .navbar {
+    background-color: transparent; /* Remove background color */
+    overflow: hidden;
+  }
+  
+  /* Style the left side of the navbar */
+  .navbar-left {
+    float: left;
+  }
+  
+  /* Style the center of the navbar */
+  .navbar-center {
+    float: left;
+    padding: 14px 16px;
+    color: #A36D68; /* Set accent color for fonts */
+  }
+  
+  /* Style the tabs */
+  .tab {
+    color: #A36D68; /* Set accent color for fonts */
+    text-decoration: none;
+    padding: 14px 16px;
+  }
+  
+  /* Style the logo */
+  .logo {
+    color: #A36D68; /* Set accent color for fonts */
+    text-decoration: none;
+    font-size: 18px;
+  }
+  
+  /* Style the right side of the navbar */
+  .navbar-right {
+    float: right;
+  }
+  
+  /* Style the login/register link */
+  .login-register {
+    color: #A36D68; /* Set accent color for fonts */
+    text-decoration: none;
+    padding: 14px 16px;
+  }
+  
+  /* Style the dropdown */
+  .dropdown {
+    display: inline-block;
+  }
+  
+  /* Style the dropdown button */
+  .dropbtn {
+    background-color: inherit;
+    color: #A36D68; /* Set accent color for fonts */
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  /* Style the dropdown content */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #FFFFFF; /* Set background color for dropdown */
+    min-width: 160px;
+    z-index: 1;
+    margin-right: 20px;
+  }
+  
+  /* Style the dropdown links */
+  .dropdown-content a {
+    color: #A36D68; /* Set accent color for fonts */
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  /* Change color of dropdown links on hover */
+  .dropdown-content a:hover {
+    background-color: #A36D68; /* Accent color */
+    color: #FFFFFF; /* Base color */
+  }
+  
+  /* Show the dropdown content on hover */
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  .user-icon{
+            height: auto;
+            max-width: 50px;
+            border-radius: 50px;
+            margin-right: 20px;
+  }
+</style>
+
+  
+
+  <div class="navbar">
+    <div class="navbar-left">
+      <a href="/" class="logo" style="background-image: url('{% static 'logo.png' %}')">ProcrastinationBuster</a>
+    </div>
+
+    <div class="navbar-center">
+      <a href="{% url 'pbapp:pbapp-tasklist' %}" class="tab">Task List</a>
+      <a href="#" class="tab">Goals</a>
+      <a href="#" class="tab">Collaboration</a>
+    </div>
+    <div class="navbar-right">
+      <div class="dropdown">
+          <button class="dropbtn">
+              <img src="{% static 'default.jpg' %}" alt="User Icon" class="user-icon">
+              <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content">
+          {% if request.user.is_authenticated %}
+            <a href="{% url 'signup' %}" >Profile</a>
+            <a href="{% url 'logout' %}" >Logout</a>
+          {% else %}
+            <a href="{% url 'signup' %}" >Register</a>
+            <a href="{% url 'login' %}" >Login</a>
+          {% endif %}
+          {% if user.is_authenticated %}
+            <div class="profile-picture-container" style="display: flex; align-items: center;">
+            {% if user.userprofile.profile_pic %}
+              <img src="{{ user.userprofile.profile_pic.url }}" class="rounded-circle profile-picture img-fluid" style=" width: 50px; height: 50px; object-fit: cover; object-position: center top;" alt="Profile Picture">
+            {% else %}
+              <img src="{% static 'default.jpg' %}" class="rounded-circle profile-picture img-fluid" style=" width: 50px; height: 50px; object-fit: cover; object-position: center top;" alt="Profile Picture">
+            {% endif %}
+          {% endif %}
+          </div>
+      </div>
+    </div>
+    </div>
+  </div>
+
+  
+  

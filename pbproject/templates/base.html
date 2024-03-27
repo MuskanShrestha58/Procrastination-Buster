@@ -1,0 +1,38 @@
+{% load static %} 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinalYearProject</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat&family=Dancing+Script:wght@600&family=Leckerli+One&family=Mooli&family=Nunito+Sans:opsz,wght@6..12,300&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        body::-webkit-scrollbar {
+            display: none;
+        }
+    
+        /* Hide scrollbar for IE, Edge and Firefox */
+        html, body {
+            scrollbar-width: none; /* For Firefox */
+            -ms-overflow-style: none; /* For Internet Explorer and Edge */
+            overflow: auto; /* Change from overlay to auto */
+            background: #FFFFFF; /* Set background color to white */
+        }
+    
+        /* Your custom CSS styles go here */
+    </style>
+</head>
+<body>
+    <div>
+        {% include 'navbar.html' %}
+        {% block content %}
+        {% endblock content %}
+       
+    </div>
+</body>
+</html>

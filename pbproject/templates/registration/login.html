@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<style>
+  /* Custom styles */
+  body {
+    background-color: #ffffff; /* Set base color */
+    color: #A36D68; /* Set text color */
+    font-family: Arial, sans-serif;
+  }
+
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .login-card {
+    width: 400px;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff; /* Set background color */
+  }
+
+  .card-title {
+    font-size: 28px;
+    font-weight: bold;
+    color: #A36D68; /* Set accent color for headings */
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .form-control {
+    background-color: #F3D6D3; /* Set sub accent color for form fields */
+    color: #A36D68; /* Set text color for form fields */
+    border: none;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 20px;
+  }
+
+  .btn-primary {
+    background-color: #A36D68; /* Set accent color for buttons */
+    color: #ffffff; /* Set text color for buttons */
+    border: none;
+    border-radius: 25px;
+    padding: 15px 30px;
+    font-size: 18px;
+    width: 100%;
+    transition-duration: 0.4s;
+  }
+
+  .btn-primary:hover {
+    background-color: #8B4F52; /* Darken accent color on hover */
+  }
+
+  .btn-link {
+    color: #A36D68; /* Set accent color for links */
+    text-decoration: none;
+    font-size: 16px;
+  }
+
+  .btn-link:hover {
+    text-decoration: underline;
+  }
+</style>
+
+<div class="container">
+  <div class="login-card">
+    <h2 class="card-title">Login</h2>
+    <form method="post">
+      {% csrf_token %}
+      {{ form|crispy }}
+      <a href="{% url 'reset_password' %}" class="btn-link mb-4">Forgot password?</a>
+      <button class="btn btn-primary" type="submit">Login</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

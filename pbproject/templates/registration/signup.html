@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<style>
+  /* Custom styles */
+  body {
+    background-color: #ffffff; /* Set base color */
+    color: #A36D68; /* Set text color */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Use modern font */
+  }
+
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .signup-card {
+    width: 400px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff; /* Use base color */
+    padding: 30px;
+    transition: box-shadow 0.3s ease; /* Add transition effect for box-shadow */
+  }
+
+  .signup-card:hover {
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.2); /* Lighten box-shadow on hover */
+  }
+
+  .card-title {
+    font-size: 36px;
+    font-weight: bold;
+    color: #A36D68; /* Use base color */
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .btn-primary {
+    padding: 15px 30px;
+    font-size: 20px;
+    background-color: #A36D68; /* Use base color */
+    border: none;
+    color: #ffffff; /* Use white text */
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Add hover effect */
+    border-radius: 10px;
+    width: 100%; /* Make button full width */
+  }
+
+  .btn-primary:hover {
+    background-color: #892C25; /* Darken accent color on hover */
+  }
+
+  .card-text a {
+    color: #A36D68; /* Use base color */
+    font-size: 18px;
+    text-decoration: none;
+    transition: color 0.3s ease; /* Add hover effect */
+  }
+
+  .card-text a:hover {
+    color: #892C25; /* Darken accent color on hover */
+  }
+
+  .form-control {
+    background-color: #F3D6D3; /* Use accent color for form background */
+    color: #A36D68; /* Use base color */
+    margin-bottom: 20px; /* Reduce margin-bottom */
+    font-size: 18px; /* Decrease font size */
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    transition: background-color 0.3s ease; /* Add transition effect for background color */
+  }
+
+  .form-control::placeholder {
+    color: #A36D68; /* Use base color */
+  }
+
+  .form-control:focus {
+    outline: none;
+    background-color: #ffffff; /* Change background color on focus */
+
+  }
+  form {
+    text-align: center; /* Center align form elements */
+  }
+
+  .form-group {
+    display: inline-block; /* Display form elements inline */
+    margin: 0 auto; /* Center the form elements horizontally */
+    text-align: left; /* Reset text alignment for form elements */
+  }
+  label {
+    font-size: 14px; /* Decrease font size */
+    color: #999; /* Lighter color */
+  }
+  .form-text {
+    font-size: 12px; /* Decrease font size */
+    color: #999; /* Lighter color */
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+</style>
+
+<div class="container">
+  <div class="signup-card">
+    <h2 class="card-title">Sign Up</h2>
+    <form method="post">
+      {% csrf_token %}
+      {{ form|crispy }}
+      <button class="btn btn-primary" type="submit">Sign Up</button>
+    </form>
+      
+    <p class="card-text">Already have an account? <a href="{% url 'login' %}">Login</a></p>
+  </div>
+</div>
+{% endblock %}

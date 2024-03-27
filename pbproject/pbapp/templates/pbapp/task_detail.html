@@ -1,0 +1,28 @@
+{%cextends 'base.html' %}
+<!-- task_detail.html -->
+<h1>{{ task.title }}</h1>
+<p>{{ task.description }}</p>
+<p>Deadline: {{ task.deadline }}</p>
+{% if task.image_url %}
+    <img src="{{ task.image_url }}" alt="Task Image">
+{% endif %}
+{% if task.pdf_file %}
+    <a href="{{ task.pdf_file.url }}">Download PDF</a>
+{% endif %}
+<p>Priority: {{ task.get_priority_display }}</p>
+<p>Status: {{ task.get_status_display }}</p>
+<p>Start Date: {{ task.start_date }}</p>
+
+<h2>Categories</h2>
+<ul>
+    {% for category in task.categories.all %}
+        <li>{{ category.name }}</li>
+    {% endfor %}
+</ul>
+
+<h2>Collaborators</h2>
+<ul>
+    {% for collaborator in task.collaborators.all %}
+        <li>{{ collaborator.username }}</li>
+    {% endfor %}
+</ul>

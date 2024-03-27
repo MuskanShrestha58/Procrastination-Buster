@@ -1,0 +1,236 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProcrastinatorBuster</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset default margin and padding */
+        body, h1, p {
+            margin: 30px;
+            padding: 0;
+        }
+
+        body,h1:hover{ 
+            color:#892C25;
+            text-shadow: default;
+
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #FFFFFF;
+            color: #A36D68;
+            overflow-x: hidden; /* Hide horizontal scrollbar */
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 50px 20px;
+            display: flex; /* Use flexbox for layout */
+            justify-content: space-between; /* Align items with space between them */
+            align-items: center; /* Center items vertically */
+            flex-wrap: wrap; /* Allow items to wrap to the next line */
+        }
+
+        .content {
+            flex: 1; /* Let content take up remaining space */
+            text-align: right; /* Align content to the right */
+        }
+
+        h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 18px;
+            margin-bottom: 30px;
+
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: #A36D68;
+            color: #fff;
+            text-decoration: none;
+            font-size: 20px;
+            border-radius: 25px;
+            transition: background-color 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: #892C25;
+        }
+
+        .illustration {
+            max-width: 100%;
+            height: auto;
+            top: 0;
+            left: 0;
+            margin-top: -30px; /* Adjust margin-top for spacing */
+            margin-left: 0px;
+        }
+        /* Style the right side of the navbar */
+        .navbar-right {
+            float: right;
+            margin-top: 20px;
+            margin-right: 50px;
+        }
+         /* Style the login/register link */
+        .login-register {
+            color: #A36D68; /* Set accent color for fonts */
+            text-decoration: none;
+            padding: 14px 16px;
+        }
+  
+        /* Style the dropdown */
+        .dropdown {
+            display: inline-block;
+        }
+        
+        /* Style the dropdown button */
+        .dropbtn {
+            background-color: inherit;
+            color: #A36D68; /* Set accent color for fonts */
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+        
+        /* Style the dropdown content */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #FFFFFF; /* Set background color for dropdown */
+            min-width: 160px;
+            z-index: 1;
+        }
+        
+        /* Style the dropdown links */
+        .dropdown-content a {
+            color: #A36D68; /* Set accent color for fonts */
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        
+        /* Change color of dropdown links on hover */
+        .dropdown-content a:hover {
+            background-color: #A36D68; /* Accent color */
+            color: #FFFFFF; /* Base color */
+        }
+        
+        /* Show the dropdown content on hover */
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 36px;
+            }
+
+            p {
+                font-size: 16px;
+            }
+
+            .cta-button {
+                font-size: 18px;
+            }
+
+            .container {
+                padding: 20px; /* Adjust padding for smaller screens */
+            }
+
+        }
+        .login-register:hover{
+            color:#892C25;
+
+        }
+        .user-icon{
+            height: auto;
+            max-width: 50px;
+            border-radius: 50px;
+        }
+    </style>
+</head>
+<body>
+    <!-- <div class="navbar-right">
+        <div class="dropdown">
+            <button class="dropbtn">
+                <img src="{% static 'default.jpg' %}" alt="User Icon" class="user-icon">
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+            <a href="#" >Register</a>
+            <a href="#" >Login</a>
+            </div>
+        </div>
+    </div> -->
+    <div class="container"> 
+        <div>
+            <img src="{% static 'logo.png' %}" alt="Illustration" class="illustration">
+        </div>
+        <div class="content">
+            <h1>Welcome to Procrastination Buster</h1>
+            <p>Stop procrastination and start achieving your goals today!</p>
+            <a href="{% url 'signup' %}" class="cta-button">Get Started</a>    
+        </div>
+
+       
+        <div class="features">
+            <h1>FEATURES</h1>
+            <div class="feature">
+                <h2>Task Management</h2>
+                <p>Organize your tasks effectively and track your progress.</p>
+            </div>
+            <div class="feature">
+                <h2>Goal Setting</h2>
+                <p>Set achievable goals and stay motivated to accomplish them.</p>
+            </div>
+            <div class="feature">
+                <h2>Collaboration</h2>
+                <p>Work together with others to achieve common goals and tasks.</p>
+            </div>
+            <div class="feature">
+                <h2>User Profile</h2>
+                <p>Track your own progress and achievements with personalized user profiles.</p>
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="advantages">
+            <h1>WHY?</h1>
+            <div class="advantage">
+                <h2>Increased Productivity</h2>
+                <p>Stay focused and accomplish more tasks in less time.</p>
+            </div>
+            <div class="advantage">
+                <h2>Improved Time Management</h2>
+                <p>Efficiently allocate your time and prioritize tasks effectively.</p>
+            </div>
+            <div class="advantage">
+                <h2>Enhanced Accountability</h2>
+                <p>Hold yourself and your team members accountable for task completion and goal achievement.</p>
+            </div>
+            <div class="advantage">
+                <h2>Better Collaboration</h2>
+                <p>Work seamlessly with others, delegate tasks, and share progress updates.</p>
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+    </div>
+    
+</body>
+</html>
+{% endblock %}
